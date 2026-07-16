@@ -1,93 +1,85 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { api } from '../../../lib/api';
-import { Bot, FileText, GitBranch, Database, ShieldCheck, Mail, CheckCircle2, Play, RefreshCw, Layers } from 'lucide-react';
+import React, { useState } from 'react';
+import { Bot, GitBranch, Database, ShieldCheck, Mail, CheckCircle2, Play, RefreshCw, Layers, Monitor } from 'lucide-react';
 
-const defaultServices = {
-  pageTitle: 'Our AI Automation Solutions',
-  pageSubtitle: 'From smart OCR processing to private LLM deployments, we develop end-to-end systems that eliminate operational drag and human errors.',
-  service1Title: 'Workflow Automation',
-  service1Desc: 'End-to-end robotic process automation combined with decision-making AI agents. Connect APIs, databases, legacy applications, and email clients seamlessly.',
-  service1Cap1: 'API Integrations',
-  service1Cap2: 'Legacy RPA Wrappers',
-  service1Cap3: 'Error Recovery Triggers',
-  service1Cap4: 'Multi-System Syncing',
-  service2Title: 'AI Conversational Agents',
-  service2Desc: 'Deploy advanced conversational agents powered by custom-tuned LLMs. Integrate with Slack, WhatsApp, email, or your web platform to provide context-rich instant replies.',
-  service2Cap1: 'Context retention',
-  service2Cap2: 'Multi-lingual support',
-  service2Cap3: 'CRM data synchronization',
-  service2Cap4: 'Automatic escalation policies',
-  service3Title: 'Intelligent Document Processing (IDP)',
-  service3Desc: 'Extract structured information from unstructured PDF files, images, emails, and cargo logs. Eliminate typing mistakes and cut down processing time by 90%.',
-  service3Cap1: 'Invoice & Receipt Extraction',
-  service3Cap2: 'Contract Analysis',
-  service3Cap3: 'Multi-page classification',
-  service3Cap4: 'Data cross-checking rules',
-  service4Title: 'Custom AI & LLM Fine-Tuning',
-  service4Desc: 'Train models on your company data or implement Retrieval-Augmented Generation (RAG) to build localized search engines that know everything about your operations.',
-  service4Cap1: 'Local RAG Engines',
-  service4Cap2: 'Private Host Deployments',
-  service4Cap3: 'Vector database setup',
-  service4Cap4: 'Model quantization & cost reduction',
-  pipelineTitle: 'See How It Connects',
-  pipelineDesc1: 'Our custom integrations link data extraction, verification databases, and third-party dashboards.',
-  pipelineDesc2: 'Click the start button to watch a simulated Invoice Automation Pipeline run step-by-step.',
+const SERVICES_CONTENT = {
+  pageTitle: 'Our Simple Business Robots',
+  pageSubtitle: 'NeuralSoft Technologies builds simple, smart business robots that do all your computer work for you! We make sure you never miss a client, never lose an email, and can talk to everyone instantly without any stress.',
+
+  // Module 1: High-Converting Web Architecture
+  service1Title: '1. Your Smart Website',
+  service1Desc: 'A beautiful online home for your business that looks fantastic on phones. When people visit and type in their details, our smart forms catch them instantly so you never lose a potential customer.',
+  service1Cap1: 'Looks beautiful on phones & tablets',
+  service1Cap2: 'Saves visitor information instantly',
+  service1Cap3: 'Designed unique to your business',
+  service1Cap4: 'Super fast and always online',
+
+  // Module 2: Centralized Operations CRM
+  service2Title: '2. Your Easy Dashboard',
+  service2Desc: 'Think of this as a super-easy command center! You can see all your clients on one clean screen, read all your chat histories, and send mass group updates with just one tap.',
+  service2Cap1: 'See all clients on one neat screen',
+  service2Cap2: 'Read all chats in one simple spot',
+  service2Cap3: 'Organize clients like simple cards',
+  service2Cap4: 'Send quick updates to everyone',
+
+  // Module 3: Autonomous Messaging & Engagement Bots
+  service3Title: '3. 24/7 Friendly Chat Robots',
+  service3Desc: 'Polite, helpful robots that talk to your customers on WhatsApp. They instantly answer common questions, send friendly reminders, and help people day or night so you can sleep easy.',
+  service3Cap1: 'Answers questions instantly 24/7',
+  service3Cap2: 'Sends helpful automatic alerts',
+  service3Cap3: 'Polite, friendly client reminders',
+  service3Cap4: 'Easily hands complex chats to humans',
+
+  // Cross-Platform Orchestration Layer
+  service4Title: '4. Super Connections',
+  service4Desc: 'We glue all your favorite apps and systems together behind the scenes. When something happens in one app, everything updates automatically! No typing twice.',
+  service4Cap1: 'Connects your website to your tools',
+  service4Cap2: 'Zero manual copying or pasting',
+  service4Cap3: 'Keeps all your data 100% accurate',
+  service4Cap4: 'Fixes itself automatically if stuck',
+
+  pipelineTitle: 'Watch the Robot Magic!',
+  pipelineDesc1: 'See how our friendly robots handle a customer from start to finish without you lifting a single finger. It captures their info, saves it, and responds immediately.',
+  pipelineDesc2: 'Click the big bright play button below to watch the sequence run step-by-step!',
 };
 
 export default function ServicesPage() {
-  const [content, setContent] = useState(defaultServices);
   const [activeStep, setActiveStep] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    async function loadContent() {
-      try {
-        const res = await api.getPageContent('services');
-        if (res && Object.keys(res).length > 0) {
-          setContent((prev) => ({ ...prev, ...res }));
-        }
-      } catch (err) {
-        console.warn('Failed to load services content from database, using fallbacks.', err);
-      }
-    }
-    loadContent();
-  }, []);
-
   const services = [
     {
-      icon: <GitBranch className="h-6 w-6 text-blue-500" />,
-      title: content.service1Title,
-      description: content.service1Desc,
-      features: [content.service1Cap1, content.service1Cap2, content.service1Cap3, content.service1Cap4],
+      icon: <Monitor className="h-10 w-10 text-blue-400" />,
+      title: SERVICES_CONTENT.service1Title,
+      description: SERVICES_CONTENT.service1Desc,
+      features: [SERVICES_CONTENT.service1Cap1, SERVICES_CONTENT.service1Cap2, SERVICES_CONTENT.service1Cap3, SERVICES_CONTENT.service1Cap4],
     },
     {
-      icon: <Bot className="h-6 w-6 text-purple-500" />,
-      title: content.service2Title,
-      description: content.service2Desc,
-      features: [content.service2Cap1, content.service2Cap2, content.service2Cap3, content.service2Cap4],
+      icon: <Layers className="h-10 w-10 text-purple-400" />,
+      title: SERVICES_CONTENT.service2Title,
+      description: SERVICES_CONTENT.service2Desc,
+      features: [SERVICES_CONTENT.service2Cap1, SERVICES_CONTENT.service2Cap2, SERVICES_CONTENT.service2Cap3, SERVICES_CONTENT.service2Cap4],
     },
     {
-      icon: <FileText className="h-6 w-6 text-cyan-500" />,
-      title: content.service3Title,
-      description: content.service3Desc,
-      features: [content.service3Cap1, content.service3Cap2, content.service3Cap3, content.service3Cap4],
+      icon: <Bot className="h-10 w-10 text-cyan-400" />,
+      title: SERVICES_CONTENT.service3Title,
+      description: SERVICES_CONTENT.service3Desc,
+      features: [SERVICES_CONTENT.service3Cap1, SERVICES_CONTENT.service3Cap2, SERVICES_CONTENT.service3Cap3, SERVICES_CONTENT.service3Cap4],
     },
     {
-      icon: <Database className="h-6 w-6 text-indigo-500" />,
-      title: content.service4Title,
-      description: content.service4Desc,
-      features: [content.service4Cap1, content.service4Cap2, content.service4Cap3, content.service4Cap4],
+      icon: <GitBranch className="h-10 w-10 text-indigo-400" />,
+      title: SERVICES_CONTENT.service4Title,
+      description: SERVICES_CONTENT.service4Desc,
+      features: [SERVICES_CONTENT.service4Cap1, SERVICES_CONTENT.service4Cap2, SERVICES_CONTENT.service4Cap3, SERVICES_CONTENT.service4Cap4],
     },
   ];
 
-  // Workflow demo steps
   const demoSteps = [
-    { id: 1, label: 'Email Ingestion', desc: 'Scan incoming emails for pdf invoice attachments.', icon: <Mail className="h-5 w-5" /> },
-    { id: 2, label: 'AI Reading (IDP)', desc: 'Extract total, line items, and vendor name using LLMs.', icon: <FileText className="h-5 w-5" /> },
-    { id: 3, label: 'Database Verification', desc: 'Query database to match invoice against purchase orders.', icon: <ShieldCheck className="h-5 w-5 text-green-500" /> },
-    { id: 4, label: 'CRM / ERP Export', desc: 'Register payment ledger in SAP and notify finance in Slack.', icon: <Layers className="h-5 w-5" /> },
+    { id: 1, label: '1. Visitor Says Hello!', desc: 'A visitor types their name and details on your website form.', icon: <Mail className="h-8 w-8 text-blue-400" /> },
+    { id: 2, label: '2. Saved to Your Dashboard!', desc: 'The robot flies the info straight into your neat system, saving it safely.', icon: <Layers className="h-8 w-8 text-purple-400" /> },
+    { id: 3, label: '3. Robot Thinks & Decides!', desc: 'The smart robot instantly understands exactly what the customer needs.', icon: <Database className="h-8 w-8 text-indigo-400" /> },
+    { id: 4, label: '4. Instant Friendly Reply!', desc: 'The robot sends a helpful text back immediately. Your customer is happy!', icon: <ShieldCheck className="h-8 w-8 text-green-400" /> },
   ];
 
   const runSimulation = () => {
@@ -105,49 +97,50 @@ export default function ServicesPage() {
         setIsPlaying(false);
         setActiveStep(null);
       }
-    }, 1500);
+    }, 2000); // Slower speed to help with comfortable reading
   };
 
   return (
-    <div className="relative overflow-hidden py-16 text-left">
+    <div className="relative overflow-hidden py-24 text-left bg-[#070b14] min-h-screen">
       {/* Glow overlays */}
-      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-        {/* Page Title */}
-        <div className="max-w-3xl space-y-4">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 space-y-28">
+        
+        {/* Large & Highly Readable Page Title */}
+        <div className="max-w-4xl space-y-8">
+          <h1 className="text-5xl sm:text-7xl font-black text-white tracking-tight leading-tight">
             Our{' '}
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              {content.pageTitle.split(' ').slice(1, 3).join(' ')}
+              Easy Business Robots
             </span>{' '}
-            {content.pageTitle.split(' ').slice(3).join(' ') || 'Solutions'}
+            and Tools
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed">
-            {content.pageSubtitle}
+          <p className="text-slate-200 text-2xl sm:text-3xl leading-relaxed font-medium">
+            {SERVICES_CONTENT.pageSubtitle}
           </p>
         </div>
 
-        {/* Detailed Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Detailed Services Grid (Large Cards with Big Text) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {services.map((service, idx) => (
-            <div key={idx} className="glass glass-hover p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
-              <div className="space-y-6">
-                <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit">
+            <div key={idx} className="bg-white/5 p-10 sm:p-12 rounded-[32px] border-2 border-white/10 flex flex-col justify-between backdrop-blur-md shadow-2xl hover:border-blue-500/40 transition-all duration-300">
+              <div className="space-y-8">
+                <div className="p-5 bg-white/5 border-2 border-white/15 rounded-2xl w-fit">
                   {service.icon}
                 </div>
-                <div className="space-y-3">
-                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{service.description}</p>
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-extrabold text-white">{service.title}</h3>
+                  <p className="text-slate-200 text-xl leading-relaxed font-normal">{service.description}</p>
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-white/5">
-                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Core Capabilities</h4>
-                <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              <div className="mt-10 pt-8 border-t-2 border-white/10">
+                <h4 className="text-lg font-black text-yellow-400 uppercase tracking-widest mb-6">What it does for you:</h4>
+                <div className="flex flex-col gap-4">
                   {service.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-center space-x-2 text-xs text-gray-300">
-                      <CheckCircle2 className="h-4 w-4 text-blue-500 flex-shrink-0" />
+                    <div key={fIdx} className="flex items-start space-x-4 text-lg sm:text-xl text-slate-100 font-medium">
+                      <CheckCircle2 className="h-7 w-7 text-green-400 flex-shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -158,49 +151,49 @@ export default function ServicesPage() {
         </div>
 
         {/* Interactive Automation Builder Widget */}
-        <section className="glass rounded-3xl p-8 border border-white/10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Description */}
-            <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                {content.pipelineTitle}
+        <section className="bg-white/5 rounded-[40px] p-10 sm:p-16 border-2 border-white/10 relative overflow-hidden backdrop-blur-md shadow-2xl">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            {/* Left Description (Very clean and highly legible) */}
+            <div className="lg:col-span-5 space-y-8">
+              <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+                {SERVICES_CONTENT.pipelineTitle}
               </h2>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-                {content.pipelineDesc1}
+              <p className="text-slate-200 text-xl sm:text-2xl leading-relaxed">
+                {SERVICES_CONTENT.pipelineDesc1}
               </p>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {content.pipelineDesc2}
+              <p className="text-slate-300 text-lg leading-relaxed">
+                {SERVICES_CONTENT.pipelineDesc2}
               </p>
-              <div>
+              <div className="pt-4">
                 <button
                   onClick={runSimulation}
                   disabled={isPlaying}
-                  className={`inline-flex items-center px-6 py-3 rounded-xl font-semibold text-sm transition-all ${
-                    isPlaying
-                      ? 'bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20'
-                  }`}
+                  className={`inline-flex items-center px-10 py-6 rounded-2xl font-bold text-xl transition-all duration-300 ${isPlaying
+                      ? 'bg-white/5 border-2 border-white/10 text-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-500/30 hover:scale-[1.03]'
+                    }`}
                 >
                   {isPlaying ? (
                     <>
-                      <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                      Simulating...
+                      <RefreshCw className="mr-3 h-6 w-6 animate-spin" />
+                      Running Simulation...
                     </>
                   ) : (
                     <>
-                      <Play className="mr-2 h-4 w-4 fill-white" />
-                      Run Pipeline Demo
+                      <Play className="mr-3 h-6 w-6 fill-white text-white" />
+                      Click to Run Robot Demo
                     </>
                   )}
                 </button>
               </div>
             </div>
 
-            {/* Right Interactive Map */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Right Interactive Map (Huge, spacious boxes for easy viewing) */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {demoSteps.map((step) => {
                   const isActive = activeStep === step.id;
                   const isFinished = activeStep !== null && activeStep > step.id;
@@ -208,29 +201,27 @@ export default function ServicesPage() {
                   return (
                     <div
                       key={step.id}
-                      className={`p-5 rounded-2xl border transition-all duration-300 ${
-                        isActive
-                          ? 'bg-blue-600/10 border-blue-500 scale-[1.03] shadow-[0_0_15px_rgba(59,130,246,0.2)]'
+                      className={`p-8 rounded-[28px] border-2 transition-all duration-300 text-left ${isActive
+                          ? 'bg-blue-600/15 border-blue-400 scale-[1.04] shadow-[0_0_25px_rgba(59,130,246,0.3)]'
                           : isFinished
-                          ? 'bg-white/5 border-green-500/30'
-                          : 'bg-white/5 border-white/5'
-                      }`}
+                            ? 'bg-white/5 border-green-500/40'
+                            : 'bg-white/5 border-white/5'
+                        }`}
                     >
-                      <div className="flex items-center space-x-3 mb-2">
+                      <div className="flex items-center space-x-4 mb-4">
                         <div
-                          className={`p-2 rounded-xl border transition-colors ${
-                            isActive
+                          className={`p-3 rounded-xl border-2 transition-colors ${isActive
                               ? 'bg-blue-500/20 border-blue-400 text-blue-400'
                               : isFinished
-                              ? 'bg-green-500/10 border-green-500/20 text-green-400'
-                              : 'bg-white/5 border-white/10 text-gray-400'
-                          }`}
+                                ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                                : 'bg-white/5 border-white/15 text-gray-300'
+                            }`}
                         >
                           {step.icon}
                         </div>
-                        <h4 className="text-sm font-semibold text-white">{step.label}</h4>
+                        <h4 className="text-xl font-bold text-white">{step.label}</h4>
                       </div>
-                      <p className="text-xs text-gray-500 leading-relaxed">{step.desc}</p>
+                      <p className="text-slate-200 text-base leading-relaxed">{step.desc}</p>
                     </div>
                   );
                 })}

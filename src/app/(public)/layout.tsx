@@ -62,12 +62,12 @@ export default function PublicLayout({
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center space-x-4">
-              <Link
+              {/* <Link
                 href="/admin"
                 className="text-xs text-gray-500 hover:text-gray-300 font-medium transition-colors"
               >
                 Portal Login
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-xl text-white bg-blue-600 hover:bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all duration-200 group"

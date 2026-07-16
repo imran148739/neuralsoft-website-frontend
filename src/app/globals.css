@@ -5,6 +5,10 @@
   --foreground: #f3f4f6;
 }
 
+html {
+  font-size: 96%; /* Zooms out the entire website layout proportionally for a sleeker dashboard feel */
+}
+
 @theme {
   --color-bg-dark: #070b14;
   --color-card-dark: #0d1322;
