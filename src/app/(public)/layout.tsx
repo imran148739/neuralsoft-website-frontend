@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Cpu, Menu, X, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import CookieConsent from '../components/CookieConsent';
 
 export default function PublicLayout({
   children,
@@ -234,13 +235,20 @@ export default function PublicLayout({
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-4 md:space-y-0">
             <p>&copy; {new Date().getFullYear()} NeuralSoft Technologies. All rights reserved.</p>
             <div className="flex space-x-6">
-              <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-gray-300 transition-colors">Cookie Preferences</a>
+              <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('open-cookie-preferences'))}
+                className="hover:text-gray-300 transition-colors cursor-pointer text-left bg-transparent border-none p-0 font-inherit"
+              >
+                Cookie Preferences
+              </button>
             </div>
           </div>
         </div>
       </footer>
+      <CookieConsent />
     </div>
   );
 }
