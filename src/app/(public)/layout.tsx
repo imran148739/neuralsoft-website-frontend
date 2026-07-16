@@ -101,8 +101,8 @@ export default function PublicLayout({
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-3 py-2.5 rounded-xl text-base font-medium transition-all ${isActive
-                      ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20'
-                      : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                    ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20'
+                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
                     }`}
                 >
                   {link.name}
@@ -185,29 +185,29 @@ export default function PublicLayout({
 
             {/* Services */}
             <div>
-              {/* <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Solutions</h3>
+              <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Solutions</h3>
               <ul className="space-y-3">
                 <li>
                   <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Workflow Automation
+                    Your Smart Website
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    AI Conversational Agents
+                    Your Easy Dashboard
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Intelligent Document Processing
+                    24/7 Friendly Chat Robots
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Custom LLM Tuning
+                    Super Connections
                   </Link>
                 </li>
-              </ul> */}
+              </ul>
             </div>
 
             {/* Contact Details */}
