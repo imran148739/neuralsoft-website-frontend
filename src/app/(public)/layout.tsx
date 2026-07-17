@@ -220,7 +220,7 @@ export default function PublicLayout({
                 </li>
                 <li className="flex items-center text-sm text-gray-400">
                   <Phone className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
-                  <span>+91 9884477627</span>
+                  <span>+91 9342371091</span>
                 </li>
                 {/* <li className="flex items-center text-sm text-gray-400">
                   <Mail className="h-5 w-5 text-blue-500 mr-3 flex-shrink-0" />
