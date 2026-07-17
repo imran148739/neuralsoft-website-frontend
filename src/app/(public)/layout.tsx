@@ -231,7 +231,10 @@ export default function PublicLayout({
           </div>
 
           <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 space-y-4 md:space-y-0">
-            <p>&copy; {new Date().getFullYear()} NeuralSoft Technologies. All rights reserved.</p>
+            <div className="flex flex-col space-y-1 text-center md:text-left">
+              <p>&copy; {new Date().getFullYear()} NeuralSoft Technologies. All rights reserved.</p>
+              <p className="text-gray-500/80">NeuralSoft Technologies is a registered MSME enterprise</p>
+            </div>
             <div className="flex space-x-6">
               <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms of Service</Link>

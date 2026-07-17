@@ -149,6 +149,12 @@ export default function AboutPage() {
             <p className="text-slate-300 text-xl leading-relaxed">
               {ABOUT_CONTENT.pageSubtitle2}
             </p>
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-slate-400 text-base flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                NeuralSoft Technologies is a registered MSME enterprise.
+              </p>
+            </div>
           </div>
 
           {/* Visual Automation Engine Simulation - Highly Graphic Flow */}
