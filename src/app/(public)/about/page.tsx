@@ -121,7 +121,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="relative overflow-hidden py-24 text-left bg-[#070b14] min-h-screen">
+    <div className="relative overflow-hidden py-4 text-left bg-[#070b14] min-h-screen">
       {/* Background gradients */}
       <div className="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[150px] pointer-events-none" />
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <div className="absolute -bottom-10 -left-10 w-44 h-44 bg-purple-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
 
             <div className="text-center mb-6">
-              <span className="inline-flex items-center justify-center text-xs sm:text-sm font-black text-yellow-400 uppercase tracking-widest bg-yellow-400/10 px-5 py-2 rounded-full border-2 border-yellow-400/20 whitespace-nowrap">
+              <span className="inline-flex items-center justify-center text-xs sm:text-sm font-black text-yellow-400 uppercase tracking-widest bg-yellow-400/10 px-5 py-2 rounded-full border-2 border-yellow-400/20">
                 ⭐ How Our Robot Works Step-by-Step
               </span>
             </div>
