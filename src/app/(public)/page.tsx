@@ -158,13 +158,13 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="relative overflow-hidden pb-24 bg-[#070b14] text-white">
+    <div className="relative overflow-hidden pb-24 bg-[#070b14] text-white lg:pt-0">
       {/* Background soft glowing lights */}
       <div className="absolute top-[-5%] left-[-10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-[25%] right-[-10%] w-[700px] h-[700px] bg-purple-600/15 rounded-full blur-[160px] pointer-events-none" />
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-36">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Hero Left Content */}
