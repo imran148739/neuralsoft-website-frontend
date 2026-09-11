@@ -11,21 +11,25 @@ import {
   Play,
   RefreshCw,
   Users,
-  Store,
 } from 'lucide-react';
 
 const SERVICES_CONTENT = {
-  pageTitle: 'Instagram Reels That Bring You Customers',
-  pageSubtitle:
-    'We create scroll-stopping Instagram Reels for businesses that are designed to generate more enquiries, leads, and store walk-ins — not just views.',
+  pageTitle: 'Instagram Content & Lead Generation',
+  pageSubtitle: 'Turn Instagram attention into real business enquiries.',
+  pageBody:
+    'We create strategic Reels and short-form content designed to make local customers stop scrolling, understand your offer, and take action.',
 
-  serviceTitle: 'Instagram Reels Content Creation',
+  serviceTitle: 'Instagram Content & Lead Generation',
   serviceDesc:
-    'We plan, create, and edit short-form Instagram content around your business, your customers, and your goals. Every Reel is built to grab attention, communicate your offer quickly, and encourage people to take action.',
-  serviceCap1: 'Scroll-stopping hooks and Reel concepts',
-  serviceCap2: 'Business-focused content strategy',
-  serviceCap3: 'Reels designed for enquiries and leads',
-  serviceCap4: 'Content that can drive local store visits',
+    'We create strategic Reels and short-form content designed to make local customers stop scrolling, understand your offer, and take action.',
+  serviceCap1: 'Reels strategy & content creation',
+  serviceCap2: 'High-converting hooks & concepts',
+  serviceCap3: 'Local business / store-walk-in content',
+  serviceCap4: 'Content designed to generate DMs & enquiries',
+  serviceCap5: 'Performance-focused content iteration',
+
+  resultTitle: 'Result',
+  resultLine: 'More attention → More enquiries → More potential customers',
 
   pipelineTitle: 'See How One Reel Can Become a Customer',
   pipelineDesc1:
@@ -48,6 +52,7 @@ export default function InstagramServicesPage() {
         SERVICES_CONTENT.serviceCap2,
         SERVICES_CONTENT.serviceCap3,
         SERVICES_CONTENT.serviceCap4,
+        SERVICES_CONTENT.serviceCap5,
       ],
     },
   ];
@@ -111,13 +116,13 @@ export default function InstagramServicesPage() {
         <div className="max-w-5xl space-y-8">
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 border-2 border-white/10 text-slate-200 font-semibold">
             <Camera className="h-5 w-5 text-pink-400" />
-            Instagram Reels Content Creation
+            Instagram Content & Lead Generation
           </div>
 
           <h1 className="text-5xl sm:text-7xl font-black text-white tracking-tight leading-tight">
-            Instagram Reels That{' '}
+            Instagram Content &{' '}
             <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Bring You Customers
+              Lead Generation
             </span>
           </h1>
 
@@ -125,18 +130,22 @@ export default function InstagramServicesPage() {
             {SERVICES_CONTENT.pageSubtitle}
           </p>
 
+          <p className="text-slate-300 text-xl sm:text-2xl leading-relaxed max-w-4xl">
+            {SERVICES_CONTENT.pageBody}
+          </p>
+
           <div className="flex flex-wrap gap-4 pt-2">
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-100">
+              <Play className="h-5 w-5 text-pink-400" />
+              More Attention
+            </div>
             <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-100">
               <MessageCircle className="h-5 w-5 text-blue-400" />
               More Enquiries
             </div>
             <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-100">
               <Users className="h-5 w-5 text-purple-400" />
-              More Leads
-            </div>
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-100">
-              <Store className="h-5 w-5 text-green-400" />
-              More Store Walk-ins
+              More Potential Customers
             </div>
           </div>
         </div>
@@ -166,7 +175,7 @@ export default function InstagramServicesPage() {
 
               <div className="mt-10 pt-8 border-t-2 border-white/10">
                 <h4 className="text-lg font-black text-yellow-400 uppercase tracking-widest mb-6">
-                  What you get:
+                  What we do:
                 </h4>
 
                 <div className="flex flex-col gap-4">
@@ -193,30 +202,28 @@ export default function InstagramServicesPage() {
 
               <div className="space-y-4">
                 <h3 className="text-3xl font-extrabold text-white">
-                  Content With a Business Goal
+                  {SERVICES_CONTENT.resultTitle}
                 </h3>
 
                 <p className="text-slate-200 text-xl leading-relaxed">
-                  We don't create Reels just to make your page look busy.
-                  The content is built around what you want more of from
-                  Instagram.
+                  {SERVICES_CONTENT.resultLine}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <Play className="h-7 w-7 text-pink-400 mb-3" />
+                  <p className="text-white font-bold">More Attention</p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                   <MessageCircle className="h-7 w-7 text-blue-400 mb-3" />
-                  <p className="text-white font-bold">Enquiries</p>
+                  <p className="text-white font-bold">More Enquiries</p>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                   <Users className="h-7 w-7 text-purple-400 mb-3" />
-                  <p className="text-white font-bold">Leads</p>
-                </div>
-
-                <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
-                  <Store className="h-7 w-7 text-green-400 mb-3" />
-                  <p className="text-white font-bold">Walk-ins</p>
+                  <p className="text-white font-bold">More Customers</p>
                 </div>
               </div>
             </div>
@@ -319,11 +326,12 @@ export default function InstagramServicesPage() {
         {/* Simple CTA */}
         <section className="text-center max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl sm:text-5xl font-black text-white">
-            Ready to Turn Instagram Into a Customer Channel?
+            Ready to Turn Instagram Attention Into Enquiries?
           </h2>
 
           <p className="text-slate-300 text-xl leading-relaxed">
-            Let's create Reels that give your business more than views.
+            Let&apos;s create Reels and short-form content that bring in real
+            business enquiries.
           </p>
 
           <a
