@@ -13,12 +13,19 @@ export default function PublicLayout({
 }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileSubMenuOpen, setMobileSubMenuOpen] = useState(false);
+  const [mobileOpenSubMenu, setMobileOpenSubMenu] = useState<string | null>(null);
 
   // Structured menu items matching the simplified, non-technical target strategy
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
+    {
+      name: 'Services',
+      href: '/services',
+      subLinks: [
+        { name: 'Instagram Reels', href: '/services/instagram' },
+        { name: 'Business Automation', href: '/services' },
+      ],
+    },
     {
       name: 'Real Examples',
       href: '/audits',
@@ -31,6 +38,14 @@ export default function PublicLayout({
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
+  ];
+
+  const solutionLinks = [
+    { name: 'Your Smart Website', href: '/services' },
+    { name: 'Your Easy Dashboard', href: '/services' },
+    { name: '24/7 Friendly Chat Robots', href: '/services' },
+    { name: 'Super Connections', href: '/services' },
+    { name: 'Instagram Reels', href: '/services/instagram' },
   ];
 
   return (
@@ -147,7 +162,7 @@ export default function PublicLayout({
                   <div key={link.name} className="space-y-1">
                     <button
                       type="button"
-                      onClick={() => setMobileSubMenuOpen(!mobileSubMenuOpen)}
+                      onClick={() => setMobileOpenSubMenu(mobileOpenSubMenu === link.name ? null : link.name)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-base font-medium transition-all ${
                         isActive
                           ? 'bg-blue-600/5 text-blue-400'
@@ -155,11 +170,11 @@ export default function PublicLayout({
                       }`}
                     >
                       <span>{link.name}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileSubMenuOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileOpenSubMenu === link.name ? 'rotate-180' : ''}`} />
                     </button>
 
                     {/* Expandable Mobile Sub-links organized directly by user intent */}
-                    {mobileSubMenuOpen && (
+                    {mobileOpenSubMenu === link.name && (
                       <div className="pl-4 pr-2 pt-1 space-y-1 border-l border-white/5 ml-3">
                         {link.subLinks.map((sub) => {
                           const isSubActive = pathname === sub.href;
@@ -169,7 +184,7 @@ export default function PublicLayout({
                               href={sub.href}
                               onClick={() => {
                                 setMobileMenuOpen(false);
-                                setMobileSubMenuOpen(false);
+                                setMobileOpenSubMenu(null);
                               }}
                               className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                                 isSubActive
@@ -256,26 +271,13 @@ export default function PublicLayout({
             <div>
               <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Solutions</h3>
               <ul className="space-y-3">
-                <li>
-                  <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Your Smart Website
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Your Easy Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    24/7 Friendly Chat Robots
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" className="text-sm text-gray-400 hover:text-white transition-colors">
-                    Super Connections
-                  </Link>
-                </li>
+                {solutionLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-sm text-gray-400 hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 

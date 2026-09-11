@@ -16,7 +16,10 @@ import {
   Minus,
   Mail,
   RefreshCw,
-  Layers
+  Layers,
+  Camera,
+  Users,
+  Store
 } from 'lucide-react';
 
 // Full Currencies List for the Searchable Dropdown
@@ -131,9 +134,14 @@ export default function HomePage() {
   // --- HARDCODED CONTENT FOR NEURALSOFT TECHNOLOGIES ---
   const content = {
     heroTitle: 'Automate Your Operations with Agentic Intelligence',
-    heroSubtitle: 'NeuralSoft Technologies designs, builds, and deploys custom AI workflows and autonomous agents that free your team from tedious, boring, and repetitive operations.',
-    heroCtaText: 'Schedule Free Audit',
-    heroCtaLink: '/contact',
+    heroSubtitle: 'We create scroll-stopping Instagram Reels that bring you enquiries, leads, and store walk-ins — not just views. Plus, we design custom AI workflows and autonomous agents that free your team from tedious, repetitive work.',
+    heroCtaText: 'Explore Instagram Reels',
+    heroCtaLink: '/services/instagram',
+    heroSecondaryCtaText: 'Schedule Free Audit',
+    heroSecondaryCtaLink: '/contact',
+
+    instagramTitle: 'Instagram Reels Content Creation',
+    instagramDesc: 'Short-form Reels built around your business, your customers, and your goals — designed to turn attention into DMs, enquiries, and walk-ins.',
     
     // Three Core Superpowers / Features
     feature1Title: '⚡ Hyper-Speed Execution',
@@ -151,10 +159,11 @@ export default function HomePage() {
 
   // Generalized 1-2-3-4 Workflow Steps 
   const workflowSteps = [
-    { id: '1', title: '💻 Smart Lead Website', desc: 'Captures fresh new clients automatically.' },
-    { id: '2', title: '📊 Custom Central Dashboard', desc: 'Tracks clients and deals in one simple room.' },
-    { id: '3', title: '💬 24/7 AI WhatsApp Bot', desc: 'Answers questions and sends reminders all day & night.' },
-    { id: '4', title: '🔄 Secure Auto-Database Sync', desc: 'Updates all your computer files instantly.' },
+    { id: '1', title: '📱 Instagram Reels Content', desc: 'Scroll-stopping Reels built for enquiries, leads, and store walk-ins.', href: '/services/instagram', featured: true },
+    { id: '2', title: '💻 Smart Lead Website', desc: 'Captures fresh new clients automatically.' },
+    { id: '3', title: '📊 Custom Central Dashboard', desc: 'Tracks clients and deals in one simple room.' },
+    { id: '4', title: '💬 24/7 AI WhatsApp Bot', desc: 'Answers questions and sends reminders all day & night.' },
+    { id: '5', title: '🔄 Secure Auto-Database Sync', desc: 'Updates all your computer files instantly.' },
   ];
 
   return (
@@ -169,9 +178,9 @@ export default function HomePage() {
           
           {/* Hero Left Content */}
           <div className="lg:col-span-7 space-y-10 text-left">
-            <div className="inline-flex items-center space-x-3 px-4 py-2.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-bold tracking-wider uppercase">
-              <Sparkles className="h-5 w-5 text-blue-400 animate-spin" />
-              <span>Easy Business Automation for Everyone 🪄</span>
+            <div className="inline-flex items-center space-x-3 px-4 py-2.5 rounded-full border border-pink-500/30 bg-pink-500/10 text-pink-300 text-sm font-bold tracking-wider uppercase">
+              <Camera className="h-5 w-5 text-pink-400" />
+              <span>Featured: Instagram Reels Content Creation</span>
             </div>
             
             <h1 className="text-5xl sm:text-7xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-blue-200 bg-clip-text">
@@ -186,17 +195,17 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 pt-4">
               <Link
                 href={content.heroCtaLink}
-                className="inline-flex items-center justify-center px-8 py-5 text-lg font-extrabold rounded-2xl text-white bg-blue-600 hover:bg-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all group duration-300"
+                className="inline-flex items-center justify-center px-8 py-5 text-lg font-extrabold rounded-2xl text-white bg-pink-600 hover:bg-pink-500 shadow-[0_0_30px_rgba(236,72,153,0.4)] transition-all group duration-300"
               >
                 {content.heroCtaText}
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
               </Link>
               
               <Link
-                href="/services"
+                href={content.heroSecondaryCtaLink}
                 className="inline-flex items-center justify-center px-8 py-5 text-lg font-extrabold rounded-2xl text-slate-100 hover:text-white bg-white/5 hover:bg-white/10 transition-all border border-white/15 hover:border-white/25 duration-300"
               >
-                Explore Solutions
+                {content.heroSecondaryCtaText}
               </Link>
             </div>
           </div>
@@ -214,11 +223,19 @@ export default function HomePage() {
               </div>
               
               <div className="space-y-6">
-                {workflowSteps.map((step, idx) => (
-                  <React.Fragment key={step.id}>
-                    <div className="p-5 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between hover:border-blue-500/40 transition-all duration-300">
+                {workflowSteps.map((step, idx) => {
+                  const stepContent = (
+                    <div className={`p-5 rounded-2xl border flex items-center justify-between transition-all duration-300 ${
+                      step.featured
+                        ? 'bg-pink-600/10 border-pink-500/30 hover:border-pink-400/50 shadow-[0_0_20px_rgba(236,72,153,0.15)]'
+                        : 'bg-white/5 border-white/5 hover:border-blue-500/40'
+                    }`}>
                       <div className="flex items-center space-x-4">
-                        <div className="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-sm font-black text-blue-400">
+                        <div className={`w-10 h-10 rounded-xl border flex items-center justify-center text-sm font-black ${
+                          step.featured
+                            ? 'bg-pink-600/20 border-pink-500/30 text-pink-400'
+                            : 'bg-blue-600/20 border-blue-500/30 text-blue-400'
+                        }`}>
                           {step.id}
                         </div>
                         <div>
@@ -226,16 +243,88 @@ export default function HomePage() {
                           <p className="text-xs sm:text-sm text-slate-300 mt-0.5">{step.desc}</p>
                         </div>
                       </div>
-                      <CheckCircle2 className="h-6 w-6 text-green-400 shrink-0 ml-2" />
+                      <CheckCircle2 className={`h-6 w-6 shrink-0 ml-2 ${step.featured ? 'text-pink-400' : 'text-green-400'}`} />
                     </div>
+                  );
+
+                  return (
+                  <React.Fragment key={step.id}>
+                    {step.href ? (
+                      <Link href={step.href} className="block">
+                        {stepContent}
+                      </Link>
+                    ) : (
+                      stepContent
+                    )}
                     {idx < workflowSteps.length - 1 && (
                       <div className="flex justify-start ml-[38.5px] my-1.5">
                         <div className="w-[3px] h-8 bg-gradient-to-b from-blue-500/60 to-transparent" />
                       </div>
                     )}
                   </React.Fragment>
-                ))}
+                  );
+                })}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Instagram Reels Service */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="relative overflow-hidden rounded-[40px] border-2 border-pink-500/20 bg-gradient-to-r from-pink-950/30 via-[#070b14] to-purple-950/30 p-8 sm:p-12 shadow-2xl">
+          <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm font-bold uppercase tracking-wider">
+                <Camera className="h-4 w-4 text-pink-400" />
+                Priority Service
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+                {content.instagramTitle}
+              </h2>
+              <p className="text-slate-200 text-lg sm:text-xl leading-relaxed">
+                {content.instagramDesc}
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Mail className="h-4 w-4 text-blue-400" />
+                  More Enquiries
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Users className="h-4 w-4 text-purple-400" />
+                  More Leads
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Store className="h-4 w-4 text-green-400" />
+                  More Walk-ins
+                </div>
+              </div>
+              <Link
+                href="/services/instagram"
+                className="inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-extrabold rounded-2xl text-white bg-pink-600 hover:bg-pink-500 shadow-lg shadow-pink-500/30 transition-all group duration-300"
+              >
+                See Instagram Reels Service
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-[28px] p-6 sm:p-8 space-y-4">
+              <h3 className="text-lg font-black text-yellow-400 uppercase tracking-widest">What you get</h3>
+              <ul className="space-y-3">
+                {[
+                  'Scroll-stopping hooks and Reel concepts',
+                  'Business-focused content strategy',
+                  'Reels designed for enquiries and leads',
+                  'Content that can drive local store visits',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-200 text-base font-medium">
+                    <CheckCircle2 className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
