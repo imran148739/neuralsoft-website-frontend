@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Cpu, Menu, X, ArrowRight, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, MapPin, ChevronDown } from 'lucide-react';
 import CookieConsent from '../components/CookieConsent';
 
 export default function PublicLayout({
@@ -41,11 +42,11 @@ export default function PublicLayout({
   ];
 
   const solutionLinks = [
+    { name: 'Instagram Reels', href: '/services/instagram' },
     { name: 'Your Smart Website', href: '/services' },
     { name: 'Your Easy Dashboard', href: '/services' },
     { name: '24/7 Friendly Chat Robots', href: '/services' },
     { name: 'Super Connections', href: '/services' },
-    { name: 'Instagram Reels', href: '/services/instagram' },
   ];
 
   return (
@@ -56,13 +57,15 @@ export default function PublicLayout({
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2 group">
-                <div className="p-2.5 bg-blue-600/10 border border-blue-500/20 rounded-xl group-hover:border-blue-500/50 transition-all duration-300">
-                  <Cpu className="h-6 w-6 text-blue-500 group-hover:rotate-12 transition-transform duration-300" />
-                </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-white via-gray-100 to-blue-400 bg-clip-text text-transparent">
-                  NeuralSoft
-                </span>
+              <Link href="/" className="flex items-center group">
+                <Image
+                  src="/neural_bright_logo.png"
+                  alt="NeuralSoft logo"
+                  width={200}
+                  height={200}
+                  priority
+                  // className="h-12 w-auto sm:h-14"
+                />
               </Link>
             </div>
 
@@ -244,9 +247,15 @@ export default function PublicLayout({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-white/5">
             {/* Logo / Tagline */}
             <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Cpu className="h-6 w-6 text-blue-500" />
-                <span className="text-xl font-bold text-white">NeuralSoft</span>
+              <div className="flex items-center">
+                <Image
+                  src="/neural_bright_logo.png"
+                  alt="NeuralSoft logo"
+                  width={200}
+                  height={200}
+                  priority
+                  // className="h-12 w-auto sm:h-14"
+                />
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
                 Empowering modern enterprises with autonomous AI agents, workflow automation, and custom LLM solutions.

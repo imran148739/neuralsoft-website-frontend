@@ -172,6 +172,66 @@ export default function HomePage() {
       <div className="absolute top-[-5%] left-[-10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-[25%] right-[-10%] w-[700px] h-[700px] bg-purple-600/15 rounded-full blur-[160px] pointer-events-none" />
 
+{/* Featured Instagram Reels Service */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
+        <div className="relative overflow-hidden rounded-[40px] border-2 border-pink-500/20 bg-gradient-to-r from-pink-950/30 via-[#070b14] to-purple-950/30 p-8 sm:p-12 shadow-2xl">
+          <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm font-bold uppercase tracking-wider">
+                <Camera className="h-4 w-4 text-pink-400" />
+                Priority Service
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+                {content.instagramTitle}
+              </h2>
+              <p className="text-slate-200 text-lg sm:text-xl leading-relaxed">
+                {content.instagramDesc}
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2">
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Mail className="h-4 w-4 text-blue-400" />
+                  More Enquiries
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Users className="h-4 w-4 text-purple-400" />
+                  More Leads
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
+                  <Store className="h-4 w-4 text-green-400" />
+                  More Walk-ins
+                </div>
+              </div>
+              <Link
+                href="/services/instagram"
+                className="inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-extrabold rounded-2xl text-white bg-pink-600 hover:bg-pink-500 shadow-lg shadow-pink-500/30 transition-all group duration-300"
+              >
+                See Instagram Reels Service
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-[28px] p-6 sm:p-8 space-y-4">
+              <h3 className="text-lg font-black text-yellow-400 uppercase tracking-widest">What you get</h3>
+              <ul className="space-y-3">
+                {[
+                  'Scroll-stopping hooks and Reel concepts',
+                  'Business-focused content strategy',
+                  'Reels designed for enquiries and leads',
+                  'Content that can drive local store visits',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-200 text-base font-medium">
+                    <CheckCircle2 className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -270,65 +330,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Instagram Reels Service */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="relative overflow-hidden rounded-[40px] border-2 border-pink-500/20 bg-gradient-to-r from-pink-950/30 via-[#070b14] to-purple-950/30 p-8 sm:p-12 shadow-2xl">
-          <div className="absolute top-0 right-0 w-[350px] h-[350px] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-300 text-sm font-bold uppercase tracking-wider">
-                <Camera className="h-4 w-4 text-pink-400" />
-                Priority Service
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
-                {content.instagramTitle}
-              </h2>
-              <p className="text-slate-200 text-lg sm:text-xl leading-relaxed">
-                {content.instagramDesc}
-              </p>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
-                  <Mail className="h-4 w-4 text-blue-400" />
-                  More Enquiries
-                </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
-                  <Users className="h-4 w-4 text-purple-400" />
-                  More Leads
-                </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-100 text-sm font-semibold">
-                  <Store className="h-4 w-4 text-green-400" />
-                  More Walk-ins
-                </div>
-              </div>
-              <Link
-                href="/services/instagram"
-                className="inline-flex items-center justify-center px-8 py-4 text-base sm:text-lg font-extrabold rounded-2xl text-white bg-pink-600 hover:bg-pink-500 shadow-lg shadow-pink-500/30 transition-all group duration-300"
-              >
-                See Instagram Reels Service
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
-              </Link>
-            </div>
-
-            <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-[28px] p-6 sm:p-8 space-y-4">
-              <h3 className="text-lg font-black text-yellow-400 uppercase tracking-widest">What you get</h3>
-              <ul className="space-y-3">
-                {[
-                  'Scroll-stopping hooks and Reel concepts',
-                  'Business-focused content strategy',
-                  'Reels designed for enquiries and leads',
-                  'Content that can drive local store visits',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-slate-200 text-base font-medium">
-                    <CheckCircle2 className="h-5 w-5 text-green-400 shrink-0 mt-0.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Three Superpowers (Features Highlight) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/5">
